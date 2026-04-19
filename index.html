@@ -15,621 +15,425 @@
             --text-main: #e0e0e0;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background-color: #000;
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        /* Live Space Canvas */
-        #spaceCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Rajdhani', sans-serif; background-color: #000; color: var(--text-main); overflow-x: hidden; }
+        #spaceCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
 
         /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .nav-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: #fff;
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        /* Cart Indicator */
-        .cart-indicator {
-            margin-left: 30px;
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-blue);
-            font-weight: bold;
-            border: 1px solid var(--neon-blue);
-            padding: 8px 15px;
-            border-radius: 20px;
-            background: rgba(0, 210, 255, 0.1);
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-        }
+        nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+        .nav-logo { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #fff; letter-spacing: 2px; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+        .cart-indicator { font-family: 'Orbitron', sans-serif; color: var(--neon-blue); font-weight: bold; border: 1px solid var(--neon-blue); padding: 8px 15px; border-radius: 20px; background: rgba(0, 210, 255, 0.1); margin-left: 20px;}
 
         /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            cursor: default;
-        }
+        .hero { height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; position: relative; cursor: default; }
+        .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 6rem; font-weight: 900; color: #ffffff; letter-spacing: 10px; cursor: pointer; text-shadow: 0 0 20px rgba(0, 210, 255, 0.5); transition: 1.2s; user-select: none; z-index: 10; }
+        .hero h1:hover { color: var(--neon-blue); text-shadow: 0 0 40px var(--neon-blue); }
 
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 6rem;
-            font-weight: 900;
-            color: #ffffff;
-            letter-spacing: 10px;
-            cursor: pointer;
-            text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
-            transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 1.2s ease-in-out, color 0.3s, text-shadow 0.3s;
-            user-select: none;
-            z-index: 10;
-        }
-
-        .hero h1:hover {
-            color: var(--neon-blue);
-            text-shadow: 0 0 40px var(--neon-blue);
-        }
-
-        /* General Section Styles */
-        section {
-            padding: 80px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #fff;
-            border-left: 4px solid var(--neon-blue);
-            padding-left: 15px;
-            text-transform: uppercase;
-        }
-
-        /* Glassmorphism Cards */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
-        }
-
-        /* Grid Layouts */
-        .highlight-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .feature-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #333;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        /* Project Card Styling */
-        .project-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: scale(1.02);
-            border-color: var(--neon-purple);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-bottom: 1px solid #333;
-        }
-
-        .project-info {
-            padding: 25px;
-        }
-
-        .project-info h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-
-        .project-info p {
-            font-size: 1.05rem;
-            color: #ccc;
-            line-height: 1.6;
-        }
-
+        /* Sections */
+        section { padding: 80px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 40px; color: #fff; border-left: 4px solid var(--neon-blue); padding-left: 15px; text-transform: uppercase; }
+        
+        .glass-card { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 12px; padding: 40px; transition: 0.3s; }
+        .glass-card:hover { transform: translateY(-5px); border-color: var(--neon-blue); box-shadow: 0 0 20px rgba(0, 210, 255, 0.2); }
+        
         /* Store Specific Styles */
-        .store-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        .store-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .store-card { text-align: center; padding: 20px; background: rgba(15, 15, 20, 0.8); }
+        .store-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; border: 1px solid #444; }
+        .store-card h3 { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 1.2rem; margin-bottom: 5px; height: 45px;}
+        .price-tag { font-size: 1.5rem; color: var(--neon-blue); font-weight: bold; margin: 10px 0; }
+        .btn-cart { width: 100%; background: transparent; border: 1px solid var(--neon-blue); color: #fff; padding: 10px 5px; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: bold; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        .btn-cart:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 15px var(--neon-blue); }
+
+        /* Sticky Bottom Checkout Bar */
+        #stickyCheckout { position: fixed; bottom: -100px; left: 0; width: 100%; background: rgba(11, 61, 145, 0.95); backdrop-filter: blur(10px); border-top: 2px solid var(--neon-blue); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: bottom 0.4s ease-in-out; box-shadow: 0 -10px 30px rgba(0,0,0,0.8); }
+        #stickyCheckout.show { bottom: 0; }
+        .sticky-text { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: bold; color: #fff; }
+        .btn-checkout-now { background: var(--nasa-red); color: #fff; border: none; padding: 12px 25px; border-radius: 5px; font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+        .btn-checkout-now:hover { background: #fff; color: var(--nasa-red); box-shadow: 0 0 25px rgba(255, 255, 255, 0.8); }
+
+        /* --- SCI-FI COMM-LINK MENU (Floating Buttons) --- */
+        .fab-container { position: fixed; bottom: 80px; left: 20px; z-index: 999; display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 15px; }
+        
+        .fab-main {
+            background: rgba(0, 0, 0, 0.8); border: 2px solid var(--neon-blue); color: #fff; 
+            padding: 15px 25px; border-radius: 30px; font-family: 'Orbitron', sans-serif; 
+            font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            transition: 0.3s; text-transform: uppercase; display: flex; align-items: center; gap: 10px;
         }
+        .fab-main:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 25px var(--neon-blue); transform: scale(1.05); }
 
-        .store-card {
-            text-align: center;
-            padding: 20px;
-            background: rgba(15, 15, 20, 0.8);
+        .fab-menu {
+            display: flex; flex-direction: column; gap: 10px; margin-left: 10px;
+            opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
+        
+        .fab-container:hover .fab-menu { opacity: 1; visibility: visible; transform: translateY(0); }
 
-        .store-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #444;
+        .fab-item {
+            background: rgba(15, 15, 20, 0.9); border: 1px solid var(--neon-purple); color: #ddd; 
+            padding: 10px 20px; border-radius: 20px; font-family: 'Rajdhani', sans-serif; 
+            font-weight: bold; font-size: 0.95rem; cursor: pointer; text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(58, 123, 213, 0.3); transition: 0.3s; text-align: left;
+            display: flex; align-items: center; gap: 8px; text-decoration: none;
         }
+        .fab-item:hover { background: var(--neon-purple); color: #fff; box-shadow: 0 0 20px var(--neon-purple); transform: translateX(10px); }
 
-        .store-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            height: 45px;
-        }
+        /* Modals (Quantity, Checkout, Archive & Custom Popups) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-box { background: #111; border: 1px solid var(--neon-blue); border-radius: 10px; padding: 40px; width: 90%; max-width: 500px; text-align: center; position: relative; }
+        .modal-box.archive-box { max-width: 900px; max-height: 85vh; overflow-y: auto; text-align: left; }
+        .modal-box.video-box { max-width: 800px; padding: 20px; background: #000; border-color: var(--nasa-red); }
+        .modal-box h2 { font-family: 'Orbitron', sans-serif; color: #fff; margin-bottom: 10px; }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--nasa-red); cursor: pointer; font-family: sans-serif; font-weight: bold; z-index: 2010;}
+        
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; color: #aaa; margin-bottom: 5px; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; }
+        .input-group input { width: 100%; padding: 12px; background: #000; border: 1px solid #444; color: #fff; border-radius: 5px; font-size: 1.1rem; }
+        .input-group input:focus { outline: none; border-color: var(--neon-blue); }
+        .btn-submit { width: 100%; background: var(--neon-blue); color: #000; border: none; padding: 15px; font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: bold; border-radius: 5px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-submit:hover { box-shadow: 0 0 20px var(--neon-blue); }
 
-        .price-tag {
-            font-size: 1.5rem;
-            color: var(--neon-blue);
-            font-weight: bold;
-            margin: 10px 0;
-        }
+        /* Archive & Gallery UI */
+        .archive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .archive-item { background: #000; border: 1px solid #333; padding: 20px; border-radius: 8px; transition: 0.3s;}
+        .archive-item:hover { border-color: var(--neon-purple); }
+        .archive-item h3 { color: var(--neon-blue); font-family: 'Orbitron', sans-serif; font-size: 1.2rem; margin-bottom: 10px; }
+        .archive-item p { color: #ccc; font-size: 0.95rem; line-height: 1.5; }
 
-        .pre-order-badge {
-            display: inline-block;
-            background: rgba(252, 61, 33, 0.15);
-            color: var(--nasa-red);
-            padding: 4px 10px;
-            border-radius: 4px;
-            border: 1px solid var(--nasa-red);
-            font-size: 0.75rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .gallery-item { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; border: 1px solid #444; transition: 0.3s;}
+        .gallery-item:hover { transform: scale(1.05); border-color: var(--neon-blue); }
 
-        .cart-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: space-between;
-        }
+        /* Fullscreen Admin Dashboard */
+        #adminDashboard { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #050505; z-index: 9999; display: none; overflow-y: auto; padding: 50px 5%; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 20px;}
+        .admin-table { width: 100%; border-collapse: collapse; background: #111; }
+        .admin-table th, .admin-table td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
+        .admin-table th { font-family: 'Orbitron', sans-serif; color: var(--neon-blue); background: #000; }
+        .btn-close-admin { background: var(--nasa-red); color: white; border: none; padding: 10px 20px; cursor: pointer; font-family: 'Orbitron', sans-serif; border-radius: 5px;}
 
-        .btn-cart {
-            flex: 1;
-            background: transparent;
-            padding: 10px 5px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-add {
-            border: 1px solid var(--neon-blue);
-            color: #fff;
-        }
-
-        .btn-add:hover {
-            background: var(--neon-blue);
-            color: #000;
-            box-shadow: 0 0 15px var(--neon-blue);
-        }
-
-        .btn-remove {
-            border: 1px solid var(--nasa-red);
-            color: #fff;
-        }
-
-        .btn-remove:hover {
-            background: var(--nasa-red);
-            color: #fff;
-            box-shadow: 0 0 15px var(--nasa-red);
-        }
-
-        /* Notification Toast */
-        #toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1001;
-            right: 30px;
-            bottom: 30px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
-            transform: translateY(20px);
-        }
-
-        #toast.show {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        #toast.add-style { border: 2px solid var(--neon-blue); box-shadow: 0 0 20px rgba(0, 210, 255, 0.5); }
-        #toast.remove-style { border: 2px solid var(--nasa-red); box-shadow: 0 0 20px rgba(252, 61, 33, 0.5); }
-
-        /* Typography */
-        h4 { font-size: 1.2rem; color: #aaa; margin-bottom: 15px; font-weight: 500; }
-        p { font-size: 1.1rem; line-height: 1.8; color: #ddd; margin-bottom: 15px; }
-        ul { margin-left: 20px; color: #ddd; font-size: 1.1rem; line-height: 1.6; }
-
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            border-top: 1px solid #333;
-            padding: 60px 20px;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        footer h2 { font-family: 'Orbitron', sans-serif; color: #fff; margin-bottom: 20px; letter-spacing: 2px; }
-        .email { font-size: 2rem; color: var(--neon-blue); text-decoration: none; font-weight: bold; transition: color 0.3s; }
-        .email:hover { color: #fff; text-shadow: 0 0 15px var(--neon-blue); }
-
-        @media (max-width: 900px) {
-            .highlight-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3.5rem; }
-            .nav-links a { display: none; }
-            .cart-indicator { margin-left: auto; }
+        /* Typography & Footer */
+        footer { background: rgba(0, 0, 0, 0.9); border-top: 1px solid #333; padding: 60px 20px; text-align: center; margin-top: 50px; }
+        .admin-link { color: #444; text-decoration: none; font-size: 0.8rem; cursor: pointer; transition: 0.3s; margin-left: 10px;}
+        .admin-link:hover { color: var(--nasa-red); }
+        .email { font-size: 2rem; color: var(--neon-blue); text-decoration: none; font-weight: bold; }
+        
+        @media (max-width: 768px) {
+            .archive-grid { grid-template-columns: 1fr; }
+            .fab-main { padding: 12px 18px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
     <canvas id="spaceCanvas"></canvas>
-
-    <div id="toast">Notification Message</div>
+    
+    <audio id="spaceAudio" loop>
+        <source src="https://www.soundjay.com/misc/sounds/spaceship-engine-1.mp3" type="audio/mpeg">
+    </audio>
 
     <nav>
         <div class="nav-logo">PORTFOLIO_</div>
         <div class="nav-links">
-            <a href="#rover">Design Lead</a>
-            <a href="#projects">Projects</a>
             <a href="#store">3D Store</a>
             <div class="cart-indicator" id="cartCount">CART [0]</div>
         </div>
     </nav>
+
+    <div class="fab-container">
+        <button class="fab-main">🚀 COMM-LINK</button>
+        <div class="fab-menu">
+            <a href="CV.pdf" download class="fab-item">📄 PERSONNEL FILE (CV)</a>
+            <button class="fab-item" onclick="openModal('galleryModal')">🧊 HOLOGRAM DECK</button>
+            <button class="fab-item" onclick="openModal('videoModal')">🎥 MISSION FOOTAGE</button>
+            <button class="fab-item" onclick="toggleAudio()" id="audioBtn">🔊 CABIN AUDIO: OFF</button>
+            <button class="fab-item" onclick="openModal('archiveModal')">📂 MISSION LOGS</button>
+        </div>
+    </div>
+
+    <div id="stickyCheckout">
+        <div class="sticky-text" id="stickyText">Items: 0 | Total: ৳ 0</div>
+        <div>
+            <button class="btn-checkout-now" onclick="clearCart()" style="background:transparent; border:1px solid #fff; margin-right:10px;">CLEAR</button>
+            <button class="btn-checkout-now" onclick="openModal('checkoutModal'); updateCheckoutSummary();">CONFIRM ORDER</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="archiveModal">
+        <div class="modal-box archive-box">
+            <span class="modal-close" onclick="closeModal('archiveModal')">X</span>
+            <h2 style="border-bottom: 2px solid var(--neon-blue); padding-bottom: 10px; margin-bottom: 20px;">MISSION LOGS: PROJECTS & RESEARCH</h2>
+            
+            <h3 style="color: #fff; font-family: 'Orbitron'; margin-top: 20px; margin-bottom: 10px;">► PUBLISHED RESEARCH</h3>
+            <div class="archive-item" style="background: linear-gradient(135deg, rgba(58, 123, 213, 0.2) 0%, #000 100%);">
+                <h3>Techno-Economic and Performance Comparison of Pv battery and Pv fuel cell system of a DC micro grid</h3>
+                <p>An in-depth comparative thesis focusing on renewable energy architecture. Analyzing structural efficiency, economic feasibility, and technical performance of photovoltaic batteries versus PV fuel cell systems within modern DC micro-grid infrastructures.</p>
+            </div>
+
+            <h3 style="color: #fff; font-family: 'Orbitron'; margin-top: 30px; margin-bottom: 10px;">► HARDWARE & AUTOMATION PROJECTS</h3>
+            <div class="archive-grid">
+                <div class="archive-item"><h3>Custom Drone (UAV)</h3><p>Designed and programmed a custom UAV with brushless motors and stabilized flight dynamics.</p></div>
+                <div class="archive-item"><h3>Mini Rover Prototype</h3><p>Scaled-down 6-wheel drive terrestrial rover used as a primary testing ground.</p></div>
+                <div class="archive-item"><h3>Agricultural Patrol Bot</h3><p>Autonomous ground vehicle engineered to assist in modern farming, equipped with moisture sensors.</p></div>
+                <div class="archive-item"><h3>High-Speed RC Boat</h3><p>Remote-controlled watercraft with a custom hydrodynamic hull and DC motor.</p></div>
+                <div class="archive-item"><h3>RF Walkie-Talkie System</h3><p>Built a functional two-way radio communication system.</p></div>
+                <div class="archive-item"><h3>Motion Sensor Light Switch</h3><p>Smart home automation utilizing PIR sensors and custom PCB design.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="galleryModal">
+        <div class="modal-box archive-box">
+            <span class="modal-close" onclick="closeModal('galleryModal')">X</span>
+            <h2 style="border-bottom: 2px solid var(--neon-purple); padding-bottom: 10px; margin-bottom: 20px;">HOLOGRAM DECK: 3D RENDERS</h2>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1631033031075-80126756919e?w=400" class="gallery-item" alt="Render">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400" class="gallery-item" alt="Render">
+                <img src="https://images.unsplash.com/photo-1517420704952-d9f39741e815?w=400" class="gallery-item" alt="Render">
+                <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=400" class="gallery-item" alt="Render">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="videoModal">
+        <div class="modal-box video-box">
+            <span class="modal-close" onclick="closeModal('videoModal')">X</span>
+            <h2 style="font-size: 1.2rem; color: #fff;">URC 2026: SYSTEM ACCEPTANCE REVIEW</h2>
+            <iframe width="100%" height="400" style="margin-top:15px; border-radius:8px;" 
+                src="https://www.youtube.com/embed/zH0rB1mZ8yA" 
+                title="Rover Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="qtyModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal('qtyModal')">X</span>
+            <h2>Select Quantity</h2>
+            <p style="color: var(--neon-blue); font-size: 1.2rem; font-weight:bold; margin-bottom: 20px;" id="qtyProductName">Product</p>
+            <form id="qtyForm" onsubmit="confirmAddToCart(event)">
+                <div class="input-group"><label>How many items?</label><input type="number" id="productQty" required min="1" value="1"></div>
+                <button type="submit" class="btn-submit">ADD TO CART</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal('checkoutModal')">X</span>
+            <h2>Checkout Details</h2>
+            <p style="color: #aaa; margin-bottom: 20px; font-size: 0.9rem;" id="checkoutSummary">Total Bill: ৳ 0</p>
+            <form id="checkoutForm" onsubmit="processOrder(event)">
+                <div class="input-group"><label>Full Name</label><input type="text" id="custName" required placeholder="Enter your name"></div>
+                <div class="input-group"><label>Phone Number</label><input type="tel" id="custPhone" required placeholder="01XXX-XXXXXX"></div>
+                <div class="input-group"><label>Email Address</label><input type="email" id="custEmail" required placeholder="example@gmail.com"></div>
+                <button type="submit" class="btn-submit">SUBMIT FINAL ORDER</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminDashboard">
+        <div class="admin-header">
+            <h2 style="font-family: 'Orbitron'; color: #fff;">COMMAND CENTER <span style="color:var(--nasa-red);">[ORDERS]</span></h2>
+            <div>
+                <button class="btn-close-admin" onclick="clearAllOrders()" style="background:transparent; border:1px solid #fff; margin-right:10px;">Clear Data</button>
+                <button class="btn-close-admin" onclick="closeAdmin()">Close Dashboard</button>
+            </div>
+        </div>
+        <div class="glass-card" style="padding: 20px; overflow-x: auto;">
+            <table class="admin-table">
+                <thead><tr><th>Date</th><th>Customer Info</th><th>Items Ordered (Qty)</th><th>Total Bill</th></tr></thead>
+                <tbody id="orderTableBody"></tbody>
+            </table>
+        </div>
+    </div>
 
     <header class="hero" id="heroArea">
         <h1 id="myName">BIBEK DATTA</h1>
     </header>
 
     <section id="rover">
-        <h2 class="section-title">Mission Command & Design</h2>
-        <div class="highlight-grid">
+        <div class="highlight-grid" style="margin-top: 50px;">
             <div class="glass-card">
                 <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=800&auto=format&fit=crop" alt="Mars Rover" class="feature-image">
                 <h3 style="font-family:'Orbitron'; color:var(--neon-blue); font-size:1.8rem; margin-bottom:10px;">GUB Mars Rover "Clados"</h3>
-                <h4>Mechanical Lead & 3D Design Lead</h4>
-                <p>Leading the mechanical architecture and 3D modeling for the next-generation Mars Rover built for the University Rover Challenge (URC) 2026.</p>
-                <ul>
-                    <li>Designing the complete mechanical structure from concept to physical manufacturing.</li>
-                    <li>Engineering advanced suspension mechanics (Rocker-Bogie).</li>
-                    <li>Designing multi-axis robotic arm functionalities for equipment servicing.</li>
-                </ul>
+                <h4 style="color: #aaa; margin-bottom: 15px;">Mechanical Lead & 3D Design Lead</h4>
+                <p style="color: #ddd; line-height: 1.6;">Leading the mechanical architecture and 3D modeling for the next-generation Mars Rover built for the University Rover Challenge (URC) 2026.</p>
             </div>
 
             <div class="glass-card" id="solidworks">
                 <img src="https://images.unsplash.com/photo-1631033031075-80126756919e?q=80&w=800&auto=format&fit=crop" alt="3D CAD Design" class="feature-image">
                 <h3 style="font-family:'Orbitron'; color:var(--neon-blue); font-size:1.8rem; margin-bottom:10px;">SolidWorks & 3D Printing</h3>
-                <h4>Mechanical Lead & 3D Design Lead</h4>
-                <p>Specialized in turning complex mechanical concepts into optimized, production-ready 3D models using SolidWorks.</p>
-                <ul>
-                    <li><strong>FEA Analysis:</strong> Conducting rigorous stress tests and load simulations on rover chassis.</li>
-                    <li><strong>Advanced Manufacturing:</strong> Utilizing the FLsun T1 Pro high-speed printer to manufacture physical prototypes using PLA+, TPU, and PETG.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2 class="section-title">Hardware & Automation Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?q=80&w=600&auto=format&fit=crop" alt="Drone">
-                <div class="project-info">
-                    <h3>Custom Drone (UAV)</h3>
-                    <p>Designed and programmed a custom UAV with brushless motors and stabilized flight dynamics for aerial telemetry tests.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=600&auto=format&fit=crop" alt="Mini Rover">
-                <div class="project-info">
-                    <h3>Mini Rover Prototype</h3>
-                    <p>Scaled-down 6-wheel drive terrestrial rover used as a primary testing ground for suspension kinematics.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1628543118914-bc11c47146ce?q=80&w=600&auto=format&fit=crop" alt="Agri Bot">
-                <div class="project-info">
-                    <h3>Agricultural Patrol Bot</h3>
-                    <p>Autonomous ground vehicle engineered to assist in modern farming, equipped with moisture and environmental sensors.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=600&auto=format&fit=crop" alt="RC Boat">
-                <div class="project-info">
-                    <h3>High-Speed RC Boat</h3>
-                    <p>Remote-controlled watercraft with a custom hydrodynamic hull, optimized battery distribution, and a water-cooled DC motor.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1520651660144-8022d2b5123d?q=80&w=600&auto=format&fit=crop" alt="Walkie Talkie">
-                <div class="project-info">
-                    <h3>RF Walkie-Talkie System</h3>
-                    <p>Built a functional two-way radio communication system requiring deep understanding of RF circuit design and antenna tuning.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=600&auto=format&fit=crop" alt="Sensor">
-                <div class="project-info">
-                    <h3>Motion Sensor Light Switch</h3>
-                    <p>Smart home automation utilizing PIR sensors. Custom PCB design with relays to control AC lighting automatically.</p>
-                </div>
+                <h4 style="color: #aaa; margin-bottom: 15px;">Mechanical Lead & 3D Design Lead</h4>
+                <p style="color: #ddd; line-height: 1.6;">Specialized in turning complex concepts into optimized 3D models using SolidWorks (FEA Analysis) and manufacturing with FLsun T1 Pro (PLA+, TPU, PETG).</p>
             </div>
         </div>
     </section>
 
     <section id="store">
-        <h2 class="section-title">3D Printed Artifacts & Parts Store</h2>
-        <div class="store-grid">
-            
-            <script>
-                // Generating 20 store items dynamically to keep HTML clean
-                const products = [
-                    { title: "LFR Chassis Main Body", img: "robot", price: "450", desc: "Lightweight Line Follower Robot base." },
-                    { title: "LFR High-Grip Wheels (Pair)", img: "wheel", price: "250", desc: "TPU printed wheels for maximum track grip." },
-                    { title: "Custom FPV Drone Frame", img: "drone", price: "850", desc: "Durable PETG drone body, 5-inch prop support." },
-                    { title: "Aerodynamic RC Plane Glider", img: "plane", price: "1200", desc: "Lightweight PLA+ glider body segments." },
-                    { title: "RC Car Chassis Base", img: "car", price: "600", desc: "Sturdy RC car base with suspension mounts." },
-                    { title: "Pikachu Figurine", img: "pikachu", price: "350", desc: "High-detail cartoon character model." },
-                    { title: "Iron Man Mark 50 Bust", img: "ironman", price: "900", desc: "Collectible comic/movie character bust." },
-                    { title: "Baby Groot Desk Planter", img: "groot", price: "400", desc: "Functional planter shaped like baby Groot." },
-                    { title: "Voronoi Pattern Flower Pot", img: "plant", price: "300", desc: "Modern parametric design for indoor plants." },
-                    { title: "SpaceX Rocket Pen Stand", img: "rocket", price: "500", desc: "Detailed multi-stage rocket engine model." },
-                    { title: "Articulated Mini Rover Toy", img: "rover", price: "750", desc: "Print-in-place moving suspension mechanics." },
-                    { title: "NEMA 17 Motor Bracket", img: "bracket", price: "150", desc: "Strong mounting bracket for stepper motors." },
-                    { title: "Arduino Uno Enclosure", img: "arduino", price: "200", desc: "Protective case with pin access slots." },
-                    { title: "Raspberry Pi 4 Case", img: "circuit", price: "250", desc: "Case with cooling fan mounting holes." },
-                    { title: "RC Boat Propeller (3-Blade)", img: "propeller", price: "100", desc: "Optimized hydrodynamic boat propeller." },
-                    { title: "Articulated Dragon", img: "dragon", price: "800", desc: "Flexible print-in-place toy dragon." },
-                    { title: "Sci-Fi Headphone Stand", img: "headphones", price: "700", desc: "Futuristic stand for your gaming headset." },
-                    { title: "18650 Battery Holder (4 Slot)", img: "battery", price: "180", desc: "Secure battery casing for custom projects." },
-                    { title: "Mechanical Keycaps (Set of 4)", img: "keyboard", price: "200", desc: "Custom designed WASD gaming keycaps." },
-                    { title: "Hexagonal Wall Art Tiles", img: "hexagon", price: "550", desc: "Interlocking geometric wall decor pieces." }
-                ];
-
-                const storeGrid = document.querySelector('.store-grid');
-                products.forEach((p, index) => {
-                    storeGrid.innerHTML += `
-                        <div class="glass-card store-card">
-                            <img src="https://source.unsplash.com/600x400/?${p.img},3d" alt="${p.title}">
-                            <h3>${p.title}</h3>
-                            <p style="font-size: 0.85rem; color: #bbb;">${p.desc}</p>
-                            <div class="price-tag">৳ ${p.price}</div>
-                            <div class="pre-order-badge">Pre-Order</div>
-                            <div class="cart-actions">
-                                <button class="btn-cart btn-add" onclick="updateCart('add', '${p.title}')">Add</button>
-                                <button class="btn-cart btn-remove" onclick="updateCart('remove', '${p.title}')">Remove</button>
-                            </div>
-                        </div>
-                    `;
-                });
-            </script>
-        </div>
-    </section>
-
-    <section id="research">
-        <h2 class="section-title">Scientific Publications</h2>
-        <div class="glass-card" style="text-align: center; background: linear-gradient(135deg, rgba(58, 123, 213, 0.2) 0%, rgba(10, 10, 15, 0.8) 100%);">
-            <span style="color: var(--neon-blue); font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Published Academic Paper</span>
-            <h3 style="margin-top: 15px; font-family:'Orbitron';">Techno-Economic and Performance Comparison of Pv battery and Pv fuel cell system of a DC micro grid</h3>
-            <p style="max-width: 800px; margin: 0 auto;">An in-depth comparative thesis focusing on renewable energy architecture. Analyzing structural efficiency, economic feasibility, and technical performance of photovoltaic batteries versus PV fuel cell systems.</p>
-        </div>
+        <h2 class="section-title">3D Printed Artifacts Store</h2>
+        <div class="store-grid" id="storeGrid"></div>
     </section>
 
     <footer>
-        <h2>INITIATE TRANSMISSION</h2>
         <a href="mailto:Swargodatta@gmail.com" class="email">Swargodatta@gmail.com</a>
-        <p style="margin-top: 40px; color: #666; font-family: 'Orbitron', sans-serif;">© 2026 BIBEK DATTA | ALL SYSTEMS ONLINE</p>
+        <p style="margin-top: 40px; color: #666; font-family: 'Orbitron';">
+            © 2026 BIBEK DATTA 
+            <span class="admin-link" onclick="openAdminPrompt()">[ ADMIN ]</span>
+        </p>
     </footer>
 
     <script>
-        // --- 1. E-commerce Cart Logic ---
-        let cartItems = 0;
-        const toast = document.getElementById("toast");
+        // --- 1. Load Products Dynamically ---
+        const products = [
+            { title: "LFR Chassis Main Body", img: "robot", price: 450 },
+            { title: "LFR High-Grip Wheels (Pair)", img: "wheel", price: 250 },
+            { title: "Custom FPV Drone Frame", img: "drone", price: 850 },
+            { title: "Aerodynamic RC Plane Glider", img: "plane", price: 1200 },
+            { title: "RC Car Chassis Base", img: "car", price: 600 },
+            { title: "Pikachu Figurine", img: "pikachu", price: 350 },
+            { title: "Iron Man Mark 50 Bust", img: "ironman", price: 900 },
+            { title: "Baby Groot Desk Planter", img: "groot", price: 400 },
+            { title: "Voronoi Pattern Flower Pot", img: "plant", price: 300 },
+            { title: "SpaceX Rocket Pen Stand", img: "rocket", price: 500 },
+            { title: "Articulated Mini Rover Toy", img: "rover", price: 750 },
+            { title: "NEMA 17 Motor Bracket", img: "bracket", price: 150 },
+            { title: "Arduino Uno Enclosure", img: "arduino", price: 200 },
+            { title: "Raspberry Pi 4 Case", img: "circuit", price: 250 },
+            { title: "RC Boat Propeller", img: "propeller", price: 100 },
+            { title: "Articulated Dragon", img: "dragon", price: 800 },
+            { title: "Sci-Fi Headphone Stand", img: "headphones", price: 700 },
+            { title: "18650 Battery Holder", img: "battery", price: 180 },
+            { title: "Mechanical Keycaps", img: "keyboard", price: 200 },
+            { title: "Hexagonal Wall Art Tiles", img: "hexagon", price: 550 }
+        ];
 
-        function updateCart(action, itemName) {
-            if (action === 'add') {
-                cartItems++;
-                toast.innerText = `Added to Cargo: ${itemName}`;
-                toast.className = "show add-style";
-            } else if (action === 'remove') {
-                if (cartItems > 0) {
-                    cartItems--;
-                    toast.innerText = `Removed from Cargo: ${itemName}`;
-                    toast.className = "show remove-style";
-                } else {
-                    toast.innerText = "Cart is already empty!";
-                    toast.className = "show remove-style";
-                }
-            }
-            
-            document.getElementById('cartCount').innerText = `CART [${cartItems}]`;
-            
-            // Hide toast after 2.5 seconds
-            setTimeout(function(){ 
-                toast.className = toast.className.replace("show", "").replace("add-style", "").replace("remove-style", ""); 
-            }, 2500);
-        }
-
-        // --- 2. Simple Fly Away and Return Animation ---
-        const myName = document.getElementById('myName');
-        const heroArea = document.getElementById('heroArea');
-        
-        myName.addEventListener('click', function(e) {
-            e.stopPropagation(); 
-            this.style.transform = "translateY(-100vh) scale(0.1)";
-            this.style.opacity = "0";
+        const storeGrid = document.getElementById('storeGrid');
+        products.forEach((p, index) => {
+            storeGrid.innerHTML += `
+                <div class="glass-card store-card">
+                    <img src="https://source.unsplash.com/600x400/?${p.img},3d" alt="${p.title}">
+                    <h3>${p.title}</h3>
+                    <div class="price-tag">৳ ${p.price}</div>
+                    <button class="btn-cart" onclick="promptQuantity(${index})">ADD TO CART</button>
+                </div>
+            `;
         });
 
-        heroArea.addEventListener('dblclick', function() {
-            myName.style.transform = "translateY(0) scale(1)";
-            myName.style.opacity = "1";
-        });
-
-        // --- 3. Live Space Background Canvas ---
-        const canvas = document.getElementById('spaceCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        let width, height;
-        let stars = [];
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-
-        class Star {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.z = Math.random() * width; 
-                this.size = Math.random() * 1.5;
-            }
-
-            update() {
-                this.z -= 2; 
-                if (this.z <= 0) {
-                    this.z = width;
-                    this.x = Math.random() * width;
-                    this.y = Math.random() * height;
-                }
-            }
-
-            draw() {
-                let x = (this.x - width / 2) * (width / this.z) + width / 2;
-                let y = (this.y - height / 2) * (width / this.z) + height / 2;
-                let s = this.size * (width / this.z);
-                
-                ctx.beginPath();
-                ctx.arc(x, y, s, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${1 - this.z / width})`; 
-                ctx.fill();
+        // --- 2. Modals & UI Controls ---
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { 
+            document.getElementById(id).classList.remove('active'); 
+            // Stop video if modal is closed
+            if(id === 'videoModal') {
+                let iframe = document.querySelector('#videoModal iframe');
+                let src = iframe.src; iframe.src = src;
             }
         }
 
-        for (let i = 0; i < 800; i++) {
-            stars.push(new Star());
+        // --- Audio Control ---
+        let audioPlaying = false;
+        function toggleAudio() {
+            const audio = document.getElementById("spaceAudio");
+            const btn = document.getElementById("audioBtn");
+            if(audioPlaying) { audio.pause(); btn.innerText = "🔊 CABIN AUDIO: OFF"; } 
+            else { audio.play(); btn.innerText = "🔊 CABIN AUDIO: ON"; btn.style.color = "var(--neon-blue)"; }
+            audioPlaying = !audioPlaying;
         }
 
-        function animate() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'; 
-            ctx.fillRect(0, 0, width, height);
+        // --- 3. Cart Logic ---
+        let cartItems = []; 
+        let selectedProductIndex = null;
+        const stickyBar = document.getElementById('stickyCheckout');
 
-            stars.forEach(star => {
-                star.update();
-                star.draw();
+        function promptQuantity(index) {
+            selectedProductIndex = index;
+            document.getElementById('qtyProductName').innerText = products[index].title;
+            document.getElementById('productQty').value = 1; 
+            openModal('qtyModal');
+        }
+
+        function confirmAddToCart(e) {
+            e.preventDefault();
+            const qty = parseInt(document.getElementById('productQty').value);
+            const product = products[selectedProductIndex];
+            const itemTotal = product.price * qty;
+
+            const existingItem = cartItems.find(item => item.name === product.title);
+            if(existingItem) { existingItem.qty += qty; existingItem.total += itemTotal; } 
+            else { cartItems.push({ name: product.title, price: product.price, qty: qty, total: itemTotal }); }
+
+            updateCartUI(); closeModal('qtyModal');
+        }
+
+        function clearCart() { cartItems = []; updateCartUI(); }
+
+        function updateCartUI() {
+            let totalQty = 0, grandTotal = 0;
+            cartItems.forEach(item => { totalQty += item.qty; grandTotal += item.total; });
+            document.getElementById('cartCount').innerText = `CART [${totalQty}]`;
+            document.getElementById('stickyText').innerText = `Items: ${totalQty} | Total: ৳ ${grandTotal}`;
+            if (cartItems.length > 0) stickyBar.classList.add('show'); else stickyBar.classList.remove('show');
+        }
+
+        function updateCheckoutSummary() {
+            let grandTotal = cartItems.reduce((sum, item) => sum + item.total, 0);
+            let details = cartItems.map(item => `${item.qty}x ${item.name}`).join("<br>");
+            document.getElementById('checkoutSummary').innerHTML = `<strong>Total Bill: ৳ ${grandTotal}</strong><br><br><span style='color:#ccc;'>Items:</span><br>${details}`;
+        }
+
+        function processOrder(e) {
+            e.preventDefault(); 
+            const order = { 
+                date: new Date().toLocaleString(), name: document.getElementById('custName').value, 
+                phone: document.getElementById('custPhone').value, email: document.getElementById('custEmail').value, 
+                items: cartItems.map(item => `${item.qty}x ${item.name}`).join(", "), 
+                totalPrice: cartItems.reduce((sum, item) => sum + item.total, 0) 
+            };
+            let existingOrders = JSON.parse(localStorage.getItem("bibekOrders")) || [];
+            existingOrders.push(order); localStorage.setItem("bibekOrders", JSON.stringify(existingOrders));
+            clearCart(); document.getElementById('checkoutForm').reset(); closeModal('checkoutModal');
+            alert("✅ Pre-Order Confirmed! Your transmission has been received.");
+        }
+
+        // --- 4. Admin Dashboard ---
+        function openAdminPrompt() {
+            if (prompt("ENTER ADMIN PASSWORD:") === "clados2026") {
+                loadAdminData(); document.getElementById('adminDashboard').style.display = 'block'; document.body.style.overflow = 'hidden'; 
+            } else { alert("❌ ACCESS DENIED."); }
+        }
+        function closeAdmin() { document.getElementById('adminDashboard').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function loadAdminData() {
+            const tbody = document.getElementById('orderTableBody');
+            const orders = JSON.parse(localStorage.getItem("bibekOrders")) || [];
+            if(orders.length === 0) { tbody.innerHTML = "<tr><td colspan='4' style='text-align:center;'>No pre-orders yet.</td></tr>"; return; }
+            tbody.innerHTML = "";
+            orders.slice().reverse().forEach(o => {
+                tbody.innerHTML += `<tr><td style="color:#888;">${o.date}</td><td><strong style="color:var(--neon-blue);">${o.name}</strong><br><span style="font-size:0.9rem; color:#aaa;">📞 ${o.phone}</span><br><span style="font-size:0.9rem; color:#aaa;">✉️ ${o.email}</span></td><td style="color:#ccc;">${o.items}</td><td style="font-weight:bold; color:var(--nasa-red); font-size:1.1rem;">৳ ${o.totalPrice}</td></tr>`;
             });
-
-            requestAnimationFrame(animate);
         }
+        function clearAllOrders() { if(confirm("Delete all orders?")) { localStorage.removeItem("bibekOrders"); loadAdminData(); } }
 
-        animate();
+        // --- 5. Space Canvas ---
+        const myName = document.getElementById('myName'); const heroArea = document.getElementById('heroArea');
+        myName.addEventListener('click', function(e) { e.stopPropagation(); this.style.transform = "translateY(-100vh) scale(0.1)"; this.style.opacity = "0"; });
+        heroArea.addEventListener('dblclick', function() { myName.style.transform = "translateY(0) scale(1)"; myName.style.opacity = "1"; });
+
+        const canvas = document.getElementById('spaceCanvas'); const ctx = canvas.getContext('2d');
+        let width, height, stars = [];
+        function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; } window.addEventListener('resize', resize); resize();
+        class Star {
+            constructor() { this.x = Math.random()*width; this.y = Math.random()*height; this.z = Math.random()*width; this.size = Math.random()*1.5; }
+            update() { this.z -= 2; if (this.z <= 0) { this.z = width; this.x = Math.random()*width; this.y = Math.random()*height; } }
+            draw() { let x = (this.x - width/2) * (width/this.z) + width/2; let y = (this.y - height/2) * (width/this.z) + height/2; let s = this.size * (width/this.z); ctx.beginPath(); ctx.arc(x, y, s, 0, Math.PI*2); ctx.fillStyle = `rgba(255, 255, 255, ${1 - this.z/width})`; ctx.fill(); }
+        }
+        for (let i = 0; i < 800; i++) stars.push(new Star());
+        function animate() { ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'; ctx.fillRect(0, 0, width, height); stars.forEach(star => { star.update(); star.draw(); }); requestAnimationFrame(animate); } animate();
     </script>
 </body>
 </html>
