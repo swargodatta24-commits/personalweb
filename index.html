@@ -55,34 +55,19 @@
         .btn-checkout-now { background: var(--nasa-red); color: #fff; border: none; padding: 12px 25px; border-radius: 5px; font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
         .btn-checkout-now:hover { background: #fff; color: var(--nasa-red); box-shadow: 0 0 25px rgba(255, 255, 255, 0.8); }
 
-        /* --- SCI-FI COMM-LINK MENU (Floating Buttons) --- */
+        /* SCI-FI COMM-LINK MENU (Floating Buttons) */
         .fab-container { position: fixed; bottom: 80px; left: 20px; z-index: 999; display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 15px; }
         
-        .fab-main {
-            background: rgba(0, 0, 0, 0.8); border: 2px solid var(--neon-blue); color: #fff; 
-            padding: 15px 25px; border-radius: 30px; font-family: 'Orbitron', sans-serif; 
-            font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
-            transition: 0.3s; text-transform: uppercase; display: flex; align-items: center; gap: 10px;
-        }
+        .fab-main { background: rgba(0, 0, 0, 0.8); border: 2px solid var(--neon-blue); color: #fff; padding: 15px 25px; border-radius: 30px; font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); transition: 0.3s; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
         .fab-main:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 25px var(--neon-blue); transform: scale(1.05); }
 
-        .fab-menu {
-            display: flex; flex-direction: column; gap: 10px; margin-left: 10px;
-            opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        
+        .fab-menu { display: flex; flex-direction: column; gap: 10px; margin-left: 10px; opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
         .fab-container:hover .fab-menu { opacity: 1; visibility: visible; transform: translateY(0); }
 
-        .fab-item {
-            background: rgba(15, 15, 20, 0.9); border: 1px solid var(--neon-purple); color: #ddd; 
-            padding: 10px 20px; border-radius: 20px; font-family: 'Rajdhani', sans-serif; 
-            font-weight: bold; font-size: 0.95rem; cursor: pointer; text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(58, 123, 213, 0.3); transition: 0.3s; text-align: left;
-            display: flex; align-items: center; gap: 8px; text-decoration: none;
-        }
+        .fab-item { background: rgba(15, 15, 20, 0.9); border: 1px solid var(--neon-purple); color: #ddd; padding: 10px 20px; border-radius: 20px; font-family: 'Rajdhani', sans-serif; font-weight: bold; font-size: 0.95rem; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 10px rgba(58, 123, 213, 0.3); transition: 0.3s; text-align: left; display: flex; align-items: center; gap: 8px; text-decoration: none; }
         .fab-item:hover { background: var(--neon-purple); color: #fff; box-shadow: 0 0 20px var(--neon-purple); transform: translateX(10px); }
 
-        /* Modals (Quantity, Checkout, Archive & Custom Popups) */
+        /* Modals */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-box { background: #111; border: 1px solid var(--neon-blue); border-radius: 10px; padding: 40px; width: 90%; max-width: 500px; text-align: center; position: relative; }
@@ -109,7 +94,7 @@
         .gallery-item { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; border: 1px solid #444; transition: 0.3s;}
         .gallery-item:hover { transform: scale(1.05); border-color: var(--neon-blue); }
 
-        /* Fullscreen Admin Dashboard */
+        /* Fullscreen Admin Dashboard (Kept for local testing) */
         #adminDashboard { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #050505; z-index: 9999; display: none; overflow-y: auto; padding: 50px 5%; }
         .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 20px;}
         .admin-table { width: 100%; border-collapse: collapse; background: #111; }
@@ -232,20 +217,21 @@
                 <div class="input-group"><label>Full Name</label><input type="text" id="custName" required placeholder="Enter your name"></div>
                 <div class="input-group"><label>Phone Number</label><input type="tel" id="custPhone" required placeholder="01XXX-XXXXXX"></div>
                 <div class="input-group"><label>Email Address</label><input type="email" id="custEmail" required placeholder="example@gmail.com"></div>
-                <button type="submit" class="btn-submit">SUBMIT FINAL ORDER</button>
+                <button type="submit" id="submitBtn" class="btn-submit">SUBMIT FINAL ORDER</button>
             </form>
         </div>
     </div>
 
     <div id="adminDashboard">
         <div class="admin-header">
-            <h2 style="font-family: 'Orbitron'; color: #fff;">COMMAND CENTER <span style="color:var(--nasa-red);">[ORDERS]</span></h2>
+            <h2 style="font-family: 'Orbitron'; color: #fff;">COMMAND CENTER <span style="color:var(--nasa-red);">[LOCAL ORDERS]</span></h2>
             <div>
                 <button class="btn-close-admin" onclick="clearAllOrders()" style="background:transparent; border:1px solid #fff; margin-right:10px;">Clear Data</button>
                 <button class="btn-close-admin" onclick="closeAdmin()">Close Dashboard</button>
             </div>
         </div>
         <div class="glass-card" style="padding: 20px; overflow-x: auto;">
+            <p style="color:var(--nasa-red); margin-bottom:15px;">Note: Real orders from the live site are sent directly to Swargodatta@gmail.com.</p>
             <table class="admin-table">
                 <thead><tr><th>Date</th><th>Customer Info</th><th>Items Ordered (Qty)</th><th>Total Bill</th></tr></thead>
                 <tbody id="orderTableBody"></tbody>
@@ -325,23 +311,18 @@
             `;
         });
 
-        // --- 2. Modals & UI Controls ---
+        // --- 2. Modals & Audio Controls ---
         function openModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal(id) { 
             document.getElementById(id).classList.remove('active'); 
-            // Stop video if modal is closed
-            if(id === 'videoModal') {
-                let iframe = document.querySelector('#videoModal iframe');
-                let src = iframe.src; iframe.src = src;
-            }
+            if(id === 'videoModal') { let iframe = document.querySelector('#videoModal iframe'); let src = iframe.src; iframe.src = src; }
         }
 
-        // --- Audio Control ---
         let audioPlaying = false;
         function toggleAudio() {
             const audio = document.getElementById("spaceAudio");
             const btn = document.getElementById("audioBtn");
-            if(audioPlaying) { audio.pause(); btn.innerText = "🔊 CABIN AUDIO: OFF"; } 
+            if(audioPlaying) { audio.pause(); btn.innerText = "🔊 CABIN AUDIO: OFF"; btn.style.color = "#ddd"; } 
             else { audio.play(); btn.innerText = "🔊 CABIN AUDIO: ON"; btn.style.color = "var(--neon-blue)"; }
             audioPlaying = !audioPlaying;
         }
@@ -387,21 +368,72 @@
             document.getElementById('checkoutSummary').innerHTML = `<strong>Total Bill: ৳ ${grandTotal}</strong><br><br><span style='color:#ccc;'>Items:</span><br>${details}`;
         }
 
+        // --- 4. REAL LIVE ORDERING (Sends Email via FormSubmit) ---
         function processOrder(e) {
             e.preventDefault(); 
-            const order = { 
-                date: new Date().toLocaleString(), name: document.getElementById('custName').value, 
-                phone: document.getElementById('custPhone').value, email: document.getElementById('custEmail').value, 
-                items: cartItems.map(item => `${item.qty}x ${item.name}`).join(", "), 
-                totalPrice: cartItems.reduce((sum, item) => sum + item.total, 0) 
-            };
-            let existingOrders = JSON.parse(localStorage.getItem("bibekOrders")) || [];
-            existingOrders.push(order); localStorage.setItem("bibekOrders", JSON.stringify(existingOrders));
-            clearCart(); document.getElementById('checkoutForm').reset(); closeModal('checkoutModal');
-            alert("✅ Pre-Order Confirmed! Your transmission has been received.");
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerText = "TRANSMITTING...";
+            submitBtn.style.backgroundColor = "var(--nasa-red)";
+            submitBtn.disabled = true;
+
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const email = document.getElementById('custEmail').value;
+            const itemsStr = cartItems.map(item => `${item.qty}x ${item.name}`).join(", ");
+            const totalBill = cartItems.reduce((sum, item) => sum + item.total, 0);
+            const date = new Date().toLocaleString();
+
+            const orderDetails = `
+Date: ${date}
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Total Bill: ৳ ${totalBill}
+Items Ordered: 
+${itemsStr}
+            `;
+
+            // 1. Send real email to you
+            fetch("https://formsubmit.co/ajax/Swargodatta@gmail.com", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    _subject: "🚀 NEW PRE-ORDER FROM SPACE STORE!",
+                    Name: name,
+                    Phone: phone,
+                    Email: email,
+                    Order_Details: orderDetails
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 2. Also save to local dashboard just in case
+                const order = { date, name, phone, email, items: itemsStr, totalPrice: totalBill };
+                let existingOrders = JSON.parse(localStorage.getItem("bibekOrders")) || [];
+                existingOrders.push(order);
+                localStorage.setItem("bibekOrders", JSON.stringify(existingOrders));
+
+                // 3. Reset UI
+                clearCart(); 
+                document.getElementById('checkoutForm').reset(); 
+                closeModal('checkoutModal');
+                submitBtn.innerText = "SUBMIT FINAL ORDER";
+                submitBtn.style.backgroundColor = "var(--neon-blue)";
+                submitBtn.disabled = false;
+
+                alert("✅ Pre-Order Confirmed! Transmission sent to the Commander.");
+            })
+            .catch(error => {
+                alert("❌ Connection Error. Please try again.");
+                submitBtn.innerText = "SUBMIT FINAL ORDER";
+                submitBtn.style.backgroundColor = "var(--neon-blue)";
+                submitBtn.disabled = false;
+                console.log(error);
+            });
         }
 
-        // --- 4. Admin Dashboard ---
+        // --- 5. Admin Dashboard ---
         function openAdminPrompt() {
             if (prompt("ENTER ADMIN PASSWORD:") === "clados2026") {
                 loadAdminData(); document.getElementById('adminDashboard').style.display = 'block'; document.body.style.overflow = 'hidden'; 
@@ -411,15 +443,15 @@
         function loadAdminData() {
             const tbody = document.getElementById('orderTableBody');
             const orders = JSON.parse(localStorage.getItem("bibekOrders")) || [];
-            if(orders.length === 0) { tbody.innerHTML = "<tr><td colspan='4' style='text-align:center;'>No pre-orders yet.</td></tr>"; return; }
+            if(orders.length === 0) { tbody.innerHTML = "<tr><td colspan='4' style='text-align:center;'>No local records found. Check your email.</td></tr>"; return; }
             tbody.innerHTML = "";
             orders.slice().reverse().forEach(o => {
                 tbody.innerHTML += `<tr><td style="color:#888;">${o.date}</td><td><strong style="color:var(--neon-blue);">${o.name}</strong><br><span style="font-size:0.9rem; color:#aaa;">📞 ${o.phone}</span><br><span style="font-size:0.9rem; color:#aaa;">✉️ ${o.email}</span></td><td style="color:#ccc;">${o.items}</td><td style="font-weight:bold; color:var(--nasa-red); font-size:1.1rem;">৳ ${o.totalPrice}</td></tr>`;
             });
         }
-        function clearAllOrders() { if(confirm("Delete all orders?")) { localStorage.removeItem("bibekOrders"); loadAdminData(); } }
+        function clearAllOrders() { if(confirm("Delete local order records?")) { localStorage.removeItem("bibekOrders"); loadAdminData(); } }
 
-        // --- 5. Space Canvas ---
+        // --- 6. Space Canvas ---
         const myName = document.getElementById('myName'); const heroArea = document.getElementById('heroArea');
         myName.addEventListener('click', function(e) { e.stopPropagation(); this.style.transform = "translateY(-100vh) scale(0.1)"; this.style.opacity = "0"; });
         heroArea.addEventListener('dblclick', function() { myName.style.transform = "translateY(0) scale(1)"; myName.style.opacity = "1"; });
